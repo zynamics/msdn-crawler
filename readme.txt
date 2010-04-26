@@ -24,7 +24,8 @@ To run the MSDN crawler you have to do the following:
   
 You should see the MSDN crawler running now. When it's done you can find an XML
 file called msdn.xml in the directory from which you started the crawler. The
-XML file has the following structure:
+XML file contains information about 33984 functions and has the following
+structure:
 
 <?xml version="1.0" encoding="ISO-8859-1"?><msdn>
 <functions>
