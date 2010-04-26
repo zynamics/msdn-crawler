@@ -1,3 +1,20 @@
+# zynamics msdn-crawler (http://github.com/zynamics/msdn-crawler)
+# Copyright (C) 2010
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
 import os
 import sys
 import re
@@ -177,14 +194,26 @@ def parse_files(msdn_directory):
                     results.append(result)
     return (file_counter, results)
 
-msdn_directory = 'C:\\Programme\\Microsoft SDKs\\Windows\\v7.0\\Help\\1033'
+def main():
+    print "zynamics msdn-crawler - Copyright 2010"
+    print "For updates please check http://github.com/zynamics/msdn-crawler"
+    print
+    if len(sys.argv) != 2:
+        print "usage: %s path_to_msdn" % sys.argv[0]
+        print "    where path_to_msdn is the path to the decompiled MSDN help files"
+        sys.exit(0)
 
-(file_counter, results) = parse_files(msdn_directory)
-results = sum(results, [])
+    msdn_directory = sys.argv[1] # 'C:\\Programme\\Microsoft SDKs\\Windows\\v7.0\\Help\\1033'
 
-print "Parsed %d files" % file_counter
-print "Extracted information about %d functions" % len(results)
+    (file_counter, results) = parse_files(msdn_directory)
+    results = sum(results, [])
 
-xml_file = open("msdn.xml", "w")
-xml_file.write(to_xml(results))
-xml_file.close()
+    print "Parsed %d files" % file_counter
+    print "Extracted information about %d functions" % len(results)
+
+    xml_file = open("msdn.xml", "w")
+    xml_file.write(to_xml(results))
+    xml_file.close()
+
+if __name__ == "__main__":
+    main()
