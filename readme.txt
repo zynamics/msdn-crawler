@@ -1,3 +1,11 @@
+zynamics MSDN Crawler has moved to Google Code
+==============================================
+
+This repository has moved to Google Code:
+http://code.google.com/p/zynamics/source/checkout?repo=msdn-crawler
+
+
+
 zynamics msdn-crawler - Copyright 2010
 For updates please check http://github.com/zynamics/msdn-crawler
 
